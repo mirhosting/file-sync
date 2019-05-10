@@ -2,22 +2,14 @@
   "type": "update",
   "logo": "images/icon.png",
   "homepage": "http://docs.jelastic.com/file-synchronization",
-  "version": "1.1",
-  "baseUrl": "https://raw.githubusercontent.com/jelastic-jps/file-sync/master/",
+  "version": "1.2",
+  "baseUrl": "https://raw.githubusercontent.com/mirhosting/file-sync/master/",
   "targetNodes": {
     "nodeType": [
-      "apache",
-      "apache2",
-      "nginxphp",
-      "nginxphp-dockerized",
-      "tomcat",
-      "tomcat7",
-      "tomcat6",
-      "tomee",
-      "tomee-dockerized"
+      "storage"
     ]
   },
-  "description": "Lsyncd is a light-weight, live mirror solution used to synchronize app servers. Being wisely coupled with inotify, lsyncd initiates file sync only if it has detected any actual changes in the system. In such a way, the load on CPU is decreased and you do not burn up many resources on processing the synchronization.",
+  "description": "Lsyncd is a light-weight, live mirror solution used to synchronize storage servers. Being wisely coupled with inotify, lsyncd initiates file sync only if it has detected any actual changes in the system. In such a way, the load on CPU is decreased and you do not burn up many resources on processing the synchronization.",
   "name": "File Synchronization",
   "onInstall": "installRsyncDaemon",
   "settings": {
@@ -36,7 +28,7 @@
         "showIf": {
           "one_env": [
             {
-              "placeholder": "relative to {WEBROOT}",
+              "placeholder": "relative to root /",
               "name": "path",
               "caption": {
                 "en": "Sync path",
@@ -58,7 +50,7 @@
           ],
           "two_envs": [
             {
-              "placeholder": "relative to ${WEBROOT}",
+              "placeholder": "relative to root /",
               "name": "path",
               "caption": {
                 "en": "Sync path",
@@ -128,7 +120,7 @@
       },
       {
         "script": {
-          "description": "Get compute nodes Ids and mirrors compute node's address for rsync",
+          "description": "Get storage nodes Ids and mirrors storage node's address for rsync",
           "script": "${baseUrl}scripts/installRsyncDaemon.js"
         }
       }
